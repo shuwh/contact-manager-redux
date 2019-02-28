@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Contact from "./Contact";
-import * as actionTypes from "../../actions/types";
+import { getContacts } from "../../actions/contactActions";
 
 class Contacts extends Component {
   componentDidMount() {
-    this.props.getContact();
+    this.props.getContacts();
   }
 
   render() {
@@ -26,7 +26,7 @@ class Contacts extends Component {
 
 Contacts.propTypes = {
   contacts: PropTypes.array.isRequired,
-  getContact: PropTypes.func.isRequired
+  getContacts: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -35,13 +35,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getContact: () => dispatch({ type: actionTypes.GET_CONTACTS })
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  { getContacts }
 )(Contacts);
