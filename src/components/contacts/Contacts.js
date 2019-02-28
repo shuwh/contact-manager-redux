@@ -25,7 +25,7 @@ class Contacts extends Component {
 }
 
 Contacts.propTypes = {
-  contacts: PropTypes.object.isRequired,
+  contacts: PropTypes.array.isRequired,
   getContact: PropTypes.func.isRequired
 };
 
@@ -37,7 +37,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getContact: dispatch({ type: actionTypes.GET_CONTACTS })
+    getContact: () => dispatch({ type: actionTypes.GET_CONTACTS })
   };
 };
 
